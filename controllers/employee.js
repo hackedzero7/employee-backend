@@ -86,7 +86,7 @@ exports.login = catchAsyncError(async (req, res, next) => {
   if (!isMatch) {
     return next(new ErrorHandler("Incorrect email or password", 401));
   }
-  sendToken(res, employee, `Welcome back ${employee.name}`, 200);
+  sendToken(res, employee, `Welcome back ${employee.firstName}`, 200);
 });
 
 exports.getMyProfile = catchAsyncError(async (req, res, next) => {
