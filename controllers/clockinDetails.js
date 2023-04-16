@@ -11,7 +11,7 @@ exports.getClockinDetails = catchAsyncError(async (req, res, next) => {
     });
   });
   
-  exports.updateClockinTime = catchAsyncError(async (req, res, next) => {
+exports.updateClockinTime = catchAsyncError(async (req, res, next) => {
     const { clockInTime } = req.body;
     // Update the clockin time for a specific employee
     const clockindetails = await ClockinDetails.findById(req.params.id);
@@ -27,3 +27,4 @@ exports.getClockinDetails = catchAsyncError(async (req, res, next) => {
     });
   });
   
+

@@ -76,7 +76,13 @@ exports.registerEmployee = catchAsyncError(async (req, res, next) => {
 
 exports.login = catchAsyncError(async (req, res, next) => {
   const { email, password } = req.body;
-
+  
+  if(!email){
+    return next(new ErrorHandler('Please enter the email', 400))
+  }
+  if(!password){
+    return next(new ErrorHandler('Please enter the password', 400))
+  }
   const employee = await Employee.findOne({ email }).select("+password");
   if (!employee) {
     return next(new ErrorHandler("Incorrect email or password", 401));
@@ -402,3 +408,10 @@ exports.clockOut = catchAsyncError(async (req, res, next) => {
     message: "Work day ended successfully",
   });
 });
+
+
+
+
+
+
+
